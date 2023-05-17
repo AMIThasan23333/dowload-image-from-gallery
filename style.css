@@ -1,7 +1,132 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-body {
-  background: #f1f1f1 !important;
+.search{
+    height: 40vh;
+   position: relative; 
+} 
+.search img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;  
 }
+
+
+.search .content {
+
+    color: #fff;
+    position: relative;  
+    z-index: 2;  
+    text-align: center;  
+}
+
+
+.search h1 {
+    font-size: 2.65rem;
+    font-weight: 600;
+} 
+
+.search h1 {
+    font-size: 2.65rem;
+    font-weight: 600;
+}
+
+.search p{
+    font-size: 1.5rem;
+    margin-top: 8px;
+}
+
+.search .search-box {
+    height: 55px;
+    margin: 45px 0;
+    /* position: relative; */
+}
+
+.search-box i{
+
+     position: absolute; 
+    left: 20px;
+    top: 50%;
+    color: gray;
+    font-size: 1.4rem;
+    transform: translateY(180%);
+
+}
+
+input,button,i {
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+
+}
+
+.search-box input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    padding-left: 55px;
+}
+
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.gallery  .images {
+    gap: 15px;
+    max-width: 95%;
+    columns: 5 340px;
+    margin-top: 40px;
+}
+
+.images img {
+    width: 100%;
+}
+
+.images .card {
+    list-style: none;
+    margin-bottom: 14px;
+    border-radius: 4px;
+    position: relative;
+
+}
+
+.images .card .details {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(0,0,0,0.7),transparent);
+
+}
+
+.gallery .load-more {
+
+    margin: 50px 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 12px 27px;
+    background: #8a6cff;
+
+
+}
+

@@ -2,6 +2,9 @@
 
 const imageWrapper = document.querySelector(".images")
 
+const loadMoreBtn = document.querySelector(".load-more")
+
+
 const apiKey="hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4";
 
 const perpage =15
@@ -44,7 +47,15 @@ const getImages = (apiURL) => {
     })
 }
 
+loadMoreImages = () =>  {
 
+    currentPage++;
+
+    let apiURL = `https://api.pexels.com/v1/curated?page=${currentPage}per_page=${perpage}`
+
+    getImages(apiURL)
+}
 
 
 getImages(`https://api.pexels.com/v1/curated?page=${currentPage}per_page=${perpage}`)
+loadMoreBtn.addEventListener("click", loadMoreImages)

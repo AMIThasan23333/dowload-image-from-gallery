@@ -1,12 +1,48 @@
 // hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4
 
-const apiKey=hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4
+const imageWrapper = document.querySelector(".images")
+
+const apiKey="hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4";
 
 const perpage =15
 let currentPage = 1
 
 
-const getImages = (apiURL)
+
+const generateHTML = (images) => {
+
+     imageWrapper.innerHTML +=  images.map(img => 
+        
+        `
+        <li class="card">
+        <img src=${img.src.large2x} alt="" srcset="">
+
+        <div class="details">
+
+            <div class="photographer">
+
+        <i class="uil uil-camera"></i>
+        <span>${img.phototgrapher}</span>
+            </div>
+
+            <button><i class="uil uil-import"></i></button>
+
+        </div>
+        </li> `
+        ).join("")
+}
+
+
+const getImages = (apiURL) => {
+
+    fetch(apiURL, {
+        headers : { Authorization : apiKey}
+    })
+    .then(res => res.json())
+    .then(data => {
+        generateHTML(data.photos)
+    })
+}
 
 
 

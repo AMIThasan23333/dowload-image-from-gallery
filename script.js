@@ -4,6 +4,10 @@ const imageWrapper = document.querySelector(".images")
 
 const loadMoreBtn = document.querySelector(".load-more")
 
+const searchInput =  document.querySelector(".search-box input")
+
+let searchTerm =null;
+
 
 const apiKey="hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4";
 
@@ -68,5 +72,23 @@ loadMoreImages = () =>  {
 }
 
 
+ const  loadSearchImages = (e) => {
+
+    if(e.key === 'Enter') {
+
+       currentPage =1;
+       searchTerm = e.target.value;
+       imageWrapper.innerHTML = " ";
+       getImages(`https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&per_page=${perpage}`);
+
+
+    }
+
+ }
+
+
+
 getImages(`https://api.pexels.com/v1/curated?page=${currentPage}per_page=${perpage}`)
 loadMoreBtn.addEventListener("click", loadMoreImages)
+
+searchInput.addEventListener("keyup", loadSearchImages)

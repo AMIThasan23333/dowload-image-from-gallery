@@ -38,12 +38,23 @@ const generateHTML = (images) => {
 
 const getImages = (apiURL) => {
 
+    /* setting disable button  */
+
+    loadMoreBtn.innerText = 'Loading...'
+    loadMoreBtn.classList.add("disabled");
+
+
     fetch(apiURL, {
         headers : { Authorization : apiKey}
     })
     .then(res => res.json())
     .then(data => {
         generateHTML(data.photos)
+
+    /* after loading data button back to normal  */
+
+        loadMoreBtn.innerText = 'Load More.'
+        loadMoreBtn.classList.remove("disabled");
     })
 }
 

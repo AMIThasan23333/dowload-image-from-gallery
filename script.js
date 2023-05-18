@@ -6,6 +6,10 @@ const loadMoreBtn = document.querySelector(".load-more")
 
 const searchInput =  document.querySelector(".search-box input")
 
+
+const lightpox =  document.querySelector(".search-box input")
+
+
 let searchTerm =null;
 
 
@@ -13,6 +17,26 @@ const apiKey="hEB9wQM6IFynOtJSgVYx7PiqFISKgiCW6xNLZ314P65BfTLoQgYEUlC4";
 
 const perpage =15
 let currentPage = 1
+
+
+
+const downloading = (imgURL) => {
+
+
+
+    fetch(imgURL)
+    .then(res => res.blob())
+    .then(file => {
+       
+
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(file)
+        a.download = new Date().getTime();
+        a.click();
+    })
+    .catch(() => alert("Failed to  download image !"))
+
+}
 
 
 
@@ -32,7 +56,9 @@ const generateHTML = (images) => {
         <span>${img.phototgrapher}</span>
             </div>
 
-            <button><i class="uil uil-import"></i></button>
+            <button onClick="downloading('${img.src.large2x}')">
+            <i class="uil uil-import"></i>
+            </button>
 
         </div>
         </li> `
@@ -60,6 +86,7 @@ const getImages = (apiURL) => {
         loadMoreBtn.innerText = 'Load More.'
         loadMoreBtn.classList.remove("disabled");
     })
+    .catch(() => alert("Failed To load Images!"))
 }
 
 loadMoreImages = () =>  {
@@ -68,12 +95,20 @@ loadMoreImages = () =>  {
 
     let apiURL = `https://api.pexels.com/v1/curated?page=${currentPage}per_page=${perpage}`
 
+/* if searcItem has some value call api with search term else call default api */
+
+    apiURL = searchTerm ? `https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&per_page=${perpage}` :  apiURL;
+
     getImages(apiURL)
 }
 
 
  const  loadSearchImages = (e) => {
 
+
+    if(e.target.value === '') return searchTerm = null;
+
+ 
     if(e.key === 'Enter') {
 
        currentPage =1;

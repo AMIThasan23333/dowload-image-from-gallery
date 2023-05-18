@@ -235,9 +235,6 @@ header .buttons i:last-child:hover {
   object-fit: contain;
 }
 
-
-
-
 @media screen and (max-width: 688px) {
   .lightbox .wrapper {
     padding: 12px;
@@ -272,3 +269,5 @@ header .buttons i:last-child:hover {
     font-size: 1.05rem;
   }
 }
+
+/*  */

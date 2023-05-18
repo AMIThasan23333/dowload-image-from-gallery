@@ -7,7 +7,7 @@ const loadMoreBtn = document.querySelector(".load-more")
 const searchInput =  document.querySelector(".search-box input")
 
 
-const lightpox =  document.querySelector(".search-box input")
+const lightpox =  document.querySelector(".lightbox")
 
 
 let searchTerm =null;
@@ -39,13 +39,24 @@ const downloading = (imgURL) => {
 }
 
 
+  const showLightbox = (name, img) => {
+
+    
+     lightpox.querySelector("img").src = img;
+     lightpox.querySelector("span").innerText = name;
+     lightpox.classList.add("show")
+
+  }
+
+
+
 
 const generateHTML = (images) => {
 
      imageWrapper.innerHTML +=  images.map(img => 
         
         `
-        <li class="card">
+        <li class="card" onclick="showLightbox('${img.phototgrapher}', ${img.src.large2x})">
         <img src=${img.src.large2x} alt="" srcset="">
 
         <div class="details">
